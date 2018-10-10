@@ -32,6 +32,34 @@ namespace Unit_Testing
                         case 1:
                             Console.WriteLine("Your balance is ${0}\n", balance);
                             break;
+                        case 2:
+                            Console.WriteLine("How much would you like to withdraw?");
+                            try
+                            { 
+                                decimal money = ProcessMoney(Console.ReadLine());
+                                if (balance - money < 0)
+                                {
+                                    Console.WriteLine("Invalid transaction, insufficient funds.");
+                                }
+                                else
+                                {
+
+                                }
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Invalid format, please type in a number.");
+                            }
+                            catch (Exception)
+                            {
+                                Console.WriteLine("Amount cannot be negative.");
+                            }
+                            
+                            break;
+
+                        case 3:
+                            break;
+
                         case 4:
                             Console.WriteLine("I'm finally richer than those snooty ATM machines!");
                             Console.WriteLine("Wait... I AM AN ATM MACHINE! Good bye.");
