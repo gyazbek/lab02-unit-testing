@@ -6,6 +6,7 @@ namespace Unit_Testing
     {
         // ATM "Global" variable
         public static decimal balance = 1000m;
+        public static string[] receipts = { };
 
         public static void Main(string[] args)
         {
@@ -42,6 +43,7 @@ namespace Unit_Testing
                                 decimal money = ProcessMoney(Console.ReadLine());
                                 if (WithdrawMoney(money))
                                 {
+                                    AddReceipt("- Withdrawl of $" + money);
                                     Console.WriteLine("\nTransaction Completed");
                                     UIViewBalance();
                                 }
@@ -67,6 +69,7 @@ namespace Unit_Testing
                             {
                                 decimal money = ProcessMoney(Console.ReadLine());
                                 if (DepositMoney(money)) {
+                                    AddReceipt("- Deposit of $" + money);
                                     Console.WriteLine("\nTransaction Completed");
                                     UIViewBalance();                             }
                                 else
@@ -87,6 +90,7 @@ namespace Unit_Testing
                         case 4:
                             Console.WriteLine("I'm finally richer than those snooty ATM machines!");
                             Console.WriteLine("Wait... I AM AN ATM MACHINE! Good bye.");
+                            PrintReceipt();
                             break;
                     }
                 }
@@ -202,6 +206,37 @@ namespace Unit_Testing
             }
         }
 
+        /// <summary>  
+        ///  Add new receipt to transaction list.
+        /// </summary>  
+        /// <param name="receipt">String</param>
+        public static void AddReceipt(string receipt)
+        {
+            string[] newReceipts = new string[receipts.Length + 1];
+            for (int i = 0; i < receipts.Length; i++)
+            {
+                newReceipts[i] = receipts[i];
+            }
+            newReceipts[newReceipts.Length - 1] = receipt;
+            receipts = newReceipts;
+        }
+
+        /// <summary>  
+        ///  Print transaction receipts
+        /// </summary>  
+        public static void PrintReceipt()
+        {
+            Console.WriteLine("\nTransaction Receipts\n" +
+                              "====================");
+            
+                for (int i = 0; i < receipts.Length; i++)
+                {
+                    Console.WriteLine(receipts[i]);
+                }
+                Console.WriteLine("Ending balance: {0}",balance);
+
+
+    }
 
         /// <summary>  
         ///  Convenience method containing our ATM Choices for our UI prompt.
