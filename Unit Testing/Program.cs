@@ -4,12 +4,12 @@ namespace Unit_Testing
 {
     public class Program
     {
-
         // ATM "Global" variable
         public static decimal balance = 1000m;
 
         public static void Main(string[] args)
         {
+            // Call our main UI method.
             UI();
         }
 
@@ -18,11 +18,14 @@ namespace Unit_Testing
         /// </summary>  
         public static void UI()
         {
+            // Write the bank introduction to the console.
             Console.WriteLine("       ,'``.._   ,'``.\r\n      :,--._:)\\,:,._,.:       HYPNO TOAD\r\n      :`--,''   :`...';\\      FUTURE BANK!\r\n       `,'       `---'  `.\r\n       /                 :\r\n      /                   \\\r\n    ,'                     :\\.___,-.\r\n   `...,---'``````-..._    |:       \\\r\n     (                 )   ;:    )   \\  _,-.\r\n      `.              (   //          `'    \\\r\n       :               `.//  )      )     , ;\r\n     ,-|`.            _,'/       )    ) ,' ,'\r\n    (  :`.`-..____..=:.-':     .     _,' ,'\r\n     `,'\\ ``--....-)='    `._,  \\  ,') _ '``._\r\n  _.-/ _ `.       (_)      /     )' ; / \\ \\`-.'\r\n `--(   `-:`.     `' ___..'  _,-'   |/   `.)\r\n     `-. `.`.``-----``--,  .'\r\n       |/`.\\`'        ,',');\r\n           `         (/  (/");
             
+            // Run choice loop as long as the choice isn't 4 which indicates a exit condition.
             int choice = 0;
             while (choice != 4)
             {
+                // Prompt with choices
                 Console.WriteLine(UIChoices());
                 try
                 {
@@ -97,6 +100,7 @@ namespace Unit_Testing
                 }
                 finally
                 {
+                    // Make sure the choice isn't set to an exit condition if the user did not chose it.
                     if (choice != 4)
                     {
                         choice = 0;
@@ -120,6 +124,7 @@ namespace Unit_Testing
         /// <returns>Returns bool for success/failure.</returns>
         public static bool DepositMoney(decimal money)
         {
+            // Only deposit non zero non negative amounts
             if (money <= 0)
             {
                 return false;
@@ -184,7 +189,7 @@ namespace Unit_Testing
             try
             {
                 decimal num = decimal.Parse(money);
-                // check if the number itself is a valid choice
+                // check if the number itself not negative
                 if (num < 0)
                 {
                     throw new Exception("Negative money not allowed.");
