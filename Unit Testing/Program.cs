@@ -20,21 +20,21 @@ namespace Unit_Testing
         {
             Console.WriteLine("       ,'``.._   ,'``.\r\n      :,--._:)\\,:,._,.:       HYPNO TOAD\r\n      :`--,''   :`...';\\      FUTURE BANK!\r\n       `,'       `---'  `.\r\n       /                 :\r\n      /                   \\\r\n    ,'                     :\\.___,-.\r\n   `...,---'``````-..._    |:       \\\r\n     (                 )   ;:    )   \\  _,-.\r\n      `.              (   //          `'    \\\r\n       :               `.//  )      )     , ;\r\n     ,-|`.            _,'/       )    ) ,' ,'\r\n    (  :`.`-..____..=:.-':     .     _,' ,'\r\n     `,'\\ ``--....-)='    `._,  \\  ,') _ '``._\r\n  _.-/ _ `.       (_)      /     )' ; / \\ \\`-.'\r\n `--(   `-:`.     `' ___..'  _,-'   |/   `.)\r\n     `-. `.`.``-----``--,  .'\r\n       |/`.\\`'        ,',');\r\n           `         (/  (/");
             
-            bool prompt = true;
-            while (prompt)
+            int choice = 0;
+            while (choice != 4)
             {
                 Console.WriteLine(UIChoices());
                 try
                 {
-                    int choice = ProcessChoice(Console.ReadLine());
+                    choice = ProcessChoice(Console.ReadLine());
                     switch (choice)
                     {
-
                         case 1:
                             Console.WriteLine("Your balance is ${0}\n", balance);
                             break;
                         case 4:
-                            prompt = false;
+                            Console.WriteLine("I'm finally richer than those snooty ATM machines!");
+                            Console.WriteLine("Wait... I AM AN ATM MACHINE! Good bye.");
                             break;
                     }
                 }
@@ -46,6 +46,13 @@ namespace Unit_Testing
                 {
                     Console.WriteLine("Invalid selection");
                 }
+                finally
+                {
+                    if (choice != 4)
+                    {
+                        choice = 0;
+                    }
+                }
             }
         }
 
@@ -55,7 +62,6 @@ namespace Unit_Testing
         /// <param name="choice">String</param>
         /// <returns>Returns choice.</returns>
         /// <exception cref="System.Exception">Thrown when input is not a valid choice</exception>
-
         public static int ProcessChoice(string choice)
         {
             try
@@ -72,6 +78,33 @@ namespace Unit_Testing
                 throw;
             }
         }
+
+
+        /// <summary>  
+        ///  This Method parses the choice and validates it
+        /// </summary>  
+        /// <param name="money">String</param>
+        /// <returns>Returns decimal.</returns>
+        /// <exception cref="System.Exception">Thrown when input is not a valid</exception>
+        public static decimal ProcessMoney(string money)
+        {
+            try
+            {
+                decimal num = decimal.Parse(money);
+                // check if the number itself is a valid choice
+                if (num < 0)
+                {
+                    throw new Exception("Negative money not allowed.");
+                }
+                return num;
+            }
+            catch (FormatException)
+            {
+                throw;
+            }
+        }
+
+
         /// <summary>  
         ///  Convenience method containing our ATM Choices for our UI prompt.
         /// </summary>  
