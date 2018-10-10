@@ -40,7 +40,7 @@ namespace Unit_Testing
                                 if (WithdrawMoney(money))
                                 {
                                     Console.WriteLine("\nTransaction Completed");
-                                    Console.WriteLine("Your balance is now ${0}\n", balance);
+                                    UIViewBalance();
                                 }
                                 else
                                 {
@@ -65,8 +65,7 @@ namespace Unit_Testing
                                 decimal money = ProcessMoney(Console.ReadLine());
                                 if (DepositMoney(money)) {
                                     Console.WriteLine("\nTransaction Completed");
-                                    Console.WriteLine("Your balance is now ${0}\n", balance);
-                                }
+                                    UIViewBalance();                             }
                                 else
                                 {
                                     Console.WriteLine("Cannot deposit zero, please try again.");
@@ -106,6 +105,13 @@ namespace Unit_Testing
             }
         }
 
+        /// <summary>  
+        ///  This is a UI helper method to print balance.
+        ///  </summary>  
+        public static void UIViewBalance()
+        {
+            Console.WriteLine("Your balance is now ${0}\n", balance);
+        }
 
         /// <summary>  
         ///  This Method deposits money into the account
