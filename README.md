@@ -22,5 +22,5 @@ Create a bank ATM application using unit testing.
 
 
 ### Output
-
+![Output](assets/Capture.JPG)
  
