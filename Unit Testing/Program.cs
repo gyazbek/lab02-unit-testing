@@ -6,7 +6,7 @@ namespace Unit_Testing
     {
 
         // ATM "Global" variable
-        static decimal balance = 1000m;
+        public static decimal balance = 1000m;
 
         public static void Main(string[] args)
         {
@@ -138,7 +138,7 @@ namespace Unit_Testing
         /// <returns>Returns bool for success/failure.</returns>
         public static bool WithdrawMoney(decimal money)
         {
-            if (balance - money < 0)
+            if (money < 0 || (balance - money) < 0)
             {
                 return false;
             }
