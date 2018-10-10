@@ -1,8 +1,8 @@
 Lab 02: Unit Testing
 =====================================
 
-## Objectives
-Create a bank ATM application using unit testing.
+## Purpose
+Create a interactive console bank ATM application with unit testing.
 
 ## Requirements
 - User interface that prompts the user for the valid operations.
@@ -22,5 +22,7 @@ Create a bank ATM application using unit testing.
 
 
 ### Output
-
+![Output](assets/Capture1.JPG)
+![Output](assets/Capture2.JPG)
+![Output](assets/Capture3.JPG)
  
