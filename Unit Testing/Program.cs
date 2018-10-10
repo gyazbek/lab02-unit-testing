@@ -39,6 +39,7 @@ namespace Unit_Testing
                                 decimal money = ProcessMoney(Console.ReadLine());
                                 if (WithdrawMoney(money))
                                 {
+                                    Console.WriteLine("\nTransaction Completed");
                                     Console.WriteLine("Your balance is now ${0}\n", balance);
                                 }
                                 else
@@ -58,6 +59,27 @@ namespace Unit_Testing
                             break;
 
                         case 3:
+                            Console.WriteLine("How much would you like to deposit?");
+                            try
+                            {
+                                decimal money = ProcessMoney(Console.ReadLine());
+                                if (DepositMoney(money)) {
+                                    Console.WriteLine("\nTransaction Completed");
+                                    Console.WriteLine("Your balance is now ${0}\n", balance);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Cannot deposit zero, please try again.");
+                                }
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Invalid format, please type in a number.");
+                            }
+                            catch (Exception)
+                            {
+                                Console.WriteLine("Amount cannot be negative.");
+                            }
                             break;
 
                         case 4:
@@ -86,6 +108,24 @@ namespace Unit_Testing
 
 
         /// <summary>  
+        ///  This Method deposits money into the account
+        ///  </summary>  
+        /// <param name="money">decimal</param>
+        /// <returns>Returns bool for success/failure.</returns>
+        public static bool DepositMoney(decimal money)
+        {
+            if (money <= 0)
+            {
+                return false;
+            }
+            else
+            {
+                balance += money;
+            }
+            return true;
+        }
+
+        /// <summary>  
         ///  This Method withdraws money if funds are sufficient
         /// </summary>  
         /// <param name="money">decimal</param>
@@ -102,6 +142,7 @@ namespace Unit_Testing
             }
             return true;
         }
+
         /// <summary>  
         ///  This Method parses the choice and validates it
         /// </summary>  
