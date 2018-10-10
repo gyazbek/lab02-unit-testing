@@ -4,6 +4,10 @@ namespace Unit_Testing
 {
     public class Program
     {
+
+        // ATM "Global" variable
+        decimal balance = 1000m;
+
         public static void Main(string[] args)
         {
             UI();
@@ -22,11 +26,32 @@ namespace Unit_Testing
             {
                 Console.WriteLine(UIChoices());
                 Console.ReadLine();
-
             }
-
         }
 
+        /// <summary>  
+        ///  This Method parses the choice and validates it
+        /// </summary>  
+        /// <param name="choice">String</param>
+        /// <returns>Returns choice.</returns>
+        /// <exception cref="System.Exception">Thrown when input is not a valid choice</exception>
+
+        public static int ProcessChoice(string choice)
+        {
+            try
+            {
+                int num = int.Parse(choice);
+                // check if the number itself is a valid choice
+                if (num < 1 || num > 4)
+                {
+                    throw new Exception("Invalid choice");
+                }
+                return num;
+            }catch (FormatException)
+            {
+                return 0;
+            }
+        }
         /// <summary>  
         ///  Convenience method containing our ATM Choices for our UI prompt.
         /// </summary>  
