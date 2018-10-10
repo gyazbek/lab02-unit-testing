@@ -37,13 +37,13 @@ namespace Unit_Testing
                             try
                             { 
                                 decimal money = ProcessMoney(Console.ReadLine());
-                                if (balance - money < 0)
+                                if (WithdrawMoney(money))
                                 {
-                                    Console.WriteLine("Invalid transaction, insufficient funds.");
+                                    Console.WriteLine("Your balance is now ${0}\n", balance);
                                 }
                                 else
                                 {
-
+                                    Console.WriteLine("Invalid transaction, insufficient funds.");
                                 }
                             }
                             catch (FormatException)
@@ -68,7 +68,7 @@ namespace Unit_Testing
                 }
                 catch (FormatException)
                 {
-                    Console.WriteLine("Invalid inputformat");
+                    Console.WriteLine("Invalid input format");
                 }
                 catch (Exception)
                 {
@@ -84,6 +84,24 @@ namespace Unit_Testing
             }
         }
 
+
+        /// <summary>  
+        ///  This Method withdraws money if funds are sufficient
+        /// </summary>  
+        /// <param name="money">decimal</param>
+        /// <returns>Returns bool for success/failure.</returns>
+        public static bool WithdrawMoney(decimal money)
+        {
+            if (balance - money < 0)
+            {
+                return false;
+            }
+            else
+            {
+                balance -= money;
+            }
+            return true;
+        }
         /// <summary>  
         ///  This Method parses the choice and validates it
         /// </summary>  
