@@ -6,7 +6,15 @@ namespace Unit_Testing
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            UI();
+        }
+
+        /// <summary>  
+        ///  This method prompts the user for the standard ATM operations.
+        /// </summary>  
+        public static void UI()
+        {
+
         }
     }
 }
